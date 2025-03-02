@@ -1,21 +1,40 @@
-class Tendril
-{
-  public final static int SEG_LENGTH = 4; //length of each segment in the tendril
-  private int myNumSegments, myX, myY;
-  private double myAngle;
-  
-  /**
-   Class constructor
-   len is how many segments in this tendril (each a fixed length, 4 is a good start)
-   theta is tendril starting angle in radians 
-   x, y  is the starting (x,y) coordinate
-   */
-  public Tendril(int len, double theta, int x, int y)
-  {
-    //your code here
-  }
-  public void show()
-  {
-    //your code here
-  }
+class Tendril {
+    public final static int SEG_LENGTH = 4; 
+    private int myNumSegments, myX, myY;
+    private double myAngle;
+
+    public Tendril(int len, double theta, int x, int y) {
+        myNumSegments = len;
+        myAngle = theta;
+        myX = x;
+        myY = y;
+        if (myNumSegments > 5) { 
+          drawTendril();
+        }
+    }
+
+    private void drawTendril() {
+        float currentX = myX;
+        float currentY = myY;
+        strokeWeight(map(myNumSegments, 2, 50, 1, 3)); 
+        stroke(0, 100, 0); //Green color
+        for (int i = 0; i < myNumSegments; i++) {
+            float nextX = currentX + SEG_LENGTH * cos((float)myAngle);
+            float nextY = currentY + SEG_LENGTH * sin((float)myAngle);
+            line(currentX, currentY, nextX, nextY);
+            currentX = nextX;
+            currentY = nextY;
+            myAngle += random(-0.1, 0.1); 
+
+            if (i == myNumSegments -1) { 
+              fill(255,0,0); //Red color for cluster
+              ellipse(currentX, currentY, 5, 5);
+              new Cluster(max(5, myNumSegments / 2), (int)currentX, (int)currentY); 
+            }
+        }
+    }
+
+    public void show() {
+        
+    }
 }
