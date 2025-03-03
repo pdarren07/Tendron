@@ -26,10 +26,10 @@ class Tendril {
             currentY = nextY;
             myAngle += random(-0.1, 0.1); 
 
-            if (i == myNumSegments -1) { 
-              fill(255,0,0); //Red color for cluster
+            if (i == myNumSegments-1) { 
+              fill(255,0,0); 
               ellipse(currentX, currentY, 5, 5);
-              Cluster c = new Cluster(max(5, myNumSegments / 2), (int)currentX, (int)currentY); 
+              new Cluster(myNumSegments / 2, (int)currentX, (int)currentY); 
             }
         }
     }
