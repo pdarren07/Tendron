@@ -7,7 +7,7 @@ public void setup() {
 
 public void draw() {
     background(255);
-    new Cluster(50, width / 2, height / 2); 
+    Cluster c = new Cluster(50, width / 2, height / 2); 
 }
 
 public void mousePressed() {
