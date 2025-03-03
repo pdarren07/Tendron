@@ -29,7 +29,7 @@ class Tendril {
             if (i == myNumSegments -1) { 
               fill(255,0,0); //Red color for cluster
               ellipse(currentX, currentY, 5, 5);
-              new Cluster(max(5, myNumSegments / 2), (int)currentX, (int)currentY); 
+              Cluster c = new Cluster(max(5, myNumSegments / 2), (int)currentX, (int)currentY); 
             }
         }
     }
